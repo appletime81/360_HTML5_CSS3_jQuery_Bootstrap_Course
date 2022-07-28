@@ -9,27 +9,26 @@ inchInput.addEventListener("input", function (e) {
     console.log("英吋輸入框裡的輸入值被變更")
 
     // 取得英寸輸入框的輸入值
-    try {
-        e.preventDefault()
-        const inch = parseFloat(inchInput.value)
-        console.log("英吋:", inch)
+    const inch = parseFloat(inchInput.value)
+    console.log("英吋:", inch)
 
-        // 計算公分(英吋 --> 公分)
-        let cm = inch * 2.54
-        console.log("公分:", cm, typeof cm)
+    // 計算公分(英吋 --> 公分)
+    let cm = inch * 2.54
+    console.log("公分:", cm, typeof cm)
 
-        // 將公分輸入框的輸入值做四捨五入到小數點後兩位
-        cm = Math.round(cm * 100) / 100
+    // 將公分輸入框的輸入值做四捨五入到小數點後兩位
+    cm = Math.round(cm * 100) / 100
 
-        // 轉換後的公分值輸入到公分的輸入框
-        cmInput.value = cm
+    // 轉換後的公分值輸入到公分的輸入框
+    cmInput.value = cm
 
-        // 如果英吋非空值，則取消顯示提示文字
-        // if (!isNaN(inch)) {
-        //     inchErr.innerText = ""
-        // }
-    } catch (err) {
-        inchErr.innerText = "請輸入數字"
+    // 判斷輸入值是否正確，如果不正確，顯示提示文字
+    if (!isNaN(inch)) {
+        inchErr.innerText = ""
+    }
+
+    if (inchInput.value === "") {
+        inchErr.innerText ="請輸入數字!!!"
     }
 })
 
@@ -38,13 +37,8 @@ cmInput.addEventListener("input", function () {
     console.log("公分輸入框裡的輸入值被變更")
 
     // 取得公分輸入框的輸入值
-    try {
-        const cm = parseFloat(cmInput.value)
-        console.log("公分:", cm)
-    } catch (e) {
-        cmErr.innerText = "請輸入數字"
-    }
-
+    const cm = parseFloat(cmInput.value)
+    console.log("公分:", cm)
 
     // 計算英吋(公分 --> 英吋)
     let inch = cm / 2.54
@@ -56,8 +50,12 @@ cmInput.addEventListener("input", function () {
     // 轉換後的英吋值輸入到英吋的輸入框
     inchInput.value = inch
 
-    // 如果公分為非空值，則取消顯示提示文字
+    // 判斷輸入值是否正確，如果不正確，顯示提示文字
     if (!isNaN(cm)) {
         cmErr.innerText = ""
+    }
+
+    if (cmInput.value === "") {
+        cmErr.innerText ="請輸入數字!!!"
     }
 })
