@@ -38,8 +38,10 @@ scoreForm.addEventListener('submit', function (e) {
     // 平均分數 >= 60 為C
     // 平均分數 < 60 為F。
     let gpa = '';
+    let color = 'secondary';
     if (averageScoreRounded >= 90) {
         gpa = 'A+';
+        color = 'success';
     } else if (averageScoreRounded >= 80) {
         gpa = 'A';
     } else if (averageScoreRounded >= 70) {
@@ -48,11 +50,12 @@ scoreForm.addEventListener('submit', function (e) {
         gpa = 'C';
     } else {
         gpa = 'F';
+        color = 'danger';
     }
 
 
     // TODO: 顯示報告
-    const report = `<div class="alert alert-primary">
+    const report = `<div class="alert alert-${color}">
         國文: ${zhScore}<br>
         英文: ${enScore}<br>
         數學: ${mathScore}<br>
