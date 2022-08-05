@@ -13,5 +13,16 @@ btn.addEventListener('click', function () {
     console.log('準備取得使用者IP資訊');
 
     // 透過axios對API發送HTTP Request
-    
+    axios
+        .get(url)
+        // 取得回傳的資料
+        .then(res => {
+            console.log('ipinfo伺服器的回應', res);
+            console.log('data', res.data);
+            console.log('city', res.data.city);
+        })
+        // 如果取得回傳資料失敗
+        .catch(err => {
+            console.log('發生錯誤', err);
+        });
 });
