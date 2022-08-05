@@ -6,8 +6,12 @@
 
 const btn = document.getElementById('btn');
 const reportBlock = document.getElementById('reportBlock');
+const url = 'https://ipinfo.io/json?token=cf9c05d7249c08';
 
 // 綁定按鈕點擊事件
 btn.addEventListener('click', function () {
     console.log('準備取得使用者IP資訊');
+
+    // 透過axios對API發送HTTP Request
+    
 });
