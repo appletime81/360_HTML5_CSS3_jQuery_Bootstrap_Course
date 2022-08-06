@@ -18,11 +18,22 @@ btn.addEventListener('click', function () {
         // 取得回傳的資料
         .then(res => {
             console.log('ipinfo伺服器的回應', res);
-            console.log('data', res.data);
-            console.log('city', res.data.city);
+            // const data = res.data;
+            const { data } = res;
+            console.log('ipinfo回傳的資料', data);
+            const { ip, city, region, country, loc, org } = data;
+            reportBlock.innerHTML = `<div class='alert alert-info'>
+                城市: ${city}<br>
+                國家: ${country}<br>
+                IP: ${loc}<br>
+                組織: ${org}<br>
+            </div>`;
         })
         // 如果取得回傳資料失敗
         .catch(err => {
             console.log('發生錯誤', err);
+            reportBlock.innerHTML = `<div class='alert alert-danger'>
+                發生錯誤，請稍後再試
+        </div>`;
         });
 });
