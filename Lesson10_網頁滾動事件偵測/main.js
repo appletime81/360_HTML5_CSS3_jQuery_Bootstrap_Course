@@ -18,7 +18,7 @@ const navigationTable = {};
 // TODO: 透過forEach迴圈取出 navLinkList 裡所有的連結DOM
 console.log('-- navLinkList --');
 navLinkList.forEach(navLink => {
-    console.log('a', navLink.dataset.target);
+    console.log('a', navLink.dataset.target)
     const sectionId = navLink.dataset.target;
     // Update navigationTable --> 物件['屬性名稱'] = 值
     navigationTable[sectionId] = {
@@ -34,6 +34,7 @@ console.log('-- navLinkList --');
 window.addEventListener('scroll', function () {
     // 取得視窗的直向滑動偵測點(scrollY)
     const y = window.scrollY;
+    scrollReport.innerText = `目前滑動位置: ${y}px`;
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
 
     // TODO: 取得每個章節的所在位置頂邊座標(offsetTop)、底邊座標(offsetTop + offsetHeight)
