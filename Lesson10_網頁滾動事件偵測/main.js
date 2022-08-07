@@ -14,9 +14,20 @@ const navLinkList = document.querySelectorAll('.navbar .nav-link'),
  *
  */
 const navigationTable = {};
-// TODO: 透過forEach迴圈取出 navLinkList 裡所有的連結DOM
 
+// TODO: 透過forEach迴圈取出 navLinkList 裡所有的連結DOM
+console.log('-- navLinkList --');
+navLinkList.forEach(navLink => {
+    console.log('a', navLink.dataset.target);
+    const sectionId = navLink.dataset.target;
+    // Update navigationTable --> 物件['屬性名稱'] = 值
+    navigationTable[sectionId] = {
+        link: navLink,
+        section: document.getElementById(sectionId),
+    };
+});
 console.log(navigationTable);
+console.log('-- navLinkList --');
 
 // 綁定視窗(window)的滾動事件(scroll)
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
