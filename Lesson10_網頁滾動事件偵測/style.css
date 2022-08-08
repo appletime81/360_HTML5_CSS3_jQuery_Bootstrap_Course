@@ -27,3 +27,12 @@ p {
 #scrollReport:hover {
     opacity: .9;
 }
+
+section .container {
+    opacity: .3;
+    transition: all .3s ease;
+}
+
+section.is-active .container {
+    opacity: 1;
+}

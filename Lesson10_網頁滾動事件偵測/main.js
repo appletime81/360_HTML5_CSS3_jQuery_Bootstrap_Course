@@ -5,14 +5,6 @@ const navLinkList = document.querySelectorAll('.navbar .nav-link'),
     // 滑動資訊報告元件
     scrollReport = document.getElementById('scrollReport');
 
-// TODO: 建立章節資訊查詢表 navigationTable
-/*
- * {
- *    section1: {section: sectionDOM, link: navLinkDOM},
- *    section2: {...}, ...
- * }
- *
- */
 const navigationTable = {};
 
 // TODO: 透過forEach迴圈取出 navLinkList 裡所有的連結DOM
@@ -32,8 +24,8 @@ console.log('-- navLinkList --');
 // 綁定視窗(window)的滾動事件(scroll)
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
 window.addEventListener('scroll', function () {
-    // 取得視窗的直向滑動偵測點(scrollY)
-    const y = window.scrollY;
+    // 取得視窗的直向滑動偵測點(scrollY) + navbar的高度(offsetHeight)
+    const y = window.scrollY + navbar.offsetHeight;
     scrollReport.innerText = `目前滑動位置: ${y}px`;
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
 
@@ -48,7 +40,12 @@ window.addEventListener('scroll', function () {
 
         // 判斷視窗的滑動偵測點是否在章節的頂邊座標與底邊座標之間
         if (y >= top && y < bottom) {
-            console.log('section', section.id);
+            // 為對應的<a></a>標籤變更樣式
+            link.classList.add('text-warning');
+            section.classList.add('is-active');
+        } else {
+            link.classList.remove('text-warning');
+            section.classList.remove('is-active');
         };
     };
     console.log('----------------------------------');
