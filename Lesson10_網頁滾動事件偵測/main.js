@@ -40,5 +40,17 @@ window.addEventListener('scroll', function () {
     // TODO: 取得每個章節的所在位置頂邊座標(offsetTop)、底邊座標(offsetTop + offsetHeight)
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight
+    for (const sid in navigationTable) {
+        const section = navigationTable[sid].section;
+        const link = navigationTable[sid].link;
+        const top = section.offsetTop; // 章節頂邊座標
+        const bottom = top + section.offsetHeight; // 章節底邊座標
+
+        // 判斷視窗的滑動偵測點是否在章節的頂邊座標與底邊座標之間
+        if (y >= top && y < bottom) {
+            console.log('section', section.id);
+        };
+    };
+    console.log('----------------------------------');
 
 });
