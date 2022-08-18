@@ -43,6 +43,11 @@
                 const $select = $("#productCategory");
                 // TODO: 取得商品分類清單
                 // PATH: "/api/category-list"
+                axios.get("/api/category-list")
+                    .then(res => {})
+                    .catch(err => {
+
+                    });
 
                 $('#createProductForm').submit(function (event) {
                     event.preventDefault();

@@ -13,4 +13,9 @@ router.get('/', function (req, res, next) {
   res.render('index');
 });
 
+//  add a route (/about)
+router.get('/about', function (req, res, next) {
+  res.render('about-page');
+});
+
 module.exports = router;
