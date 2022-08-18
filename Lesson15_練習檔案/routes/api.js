@@ -87,6 +87,7 @@ router.post('/product/create', function (req, res, next) {
     // Add a document
     // https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document
     const product = req.body;
+    
     // db
     //     .collection("productList")
     //     .add(product)
