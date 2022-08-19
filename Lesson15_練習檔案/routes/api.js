@@ -3,7 +3,7 @@ const moment = require('moment');
 const axios = require('axios');
 const router = express.Router();
 // const admin = require('../firebase');
-// const db = require('../db');
+const db = require('../db');
 
 // 登入
 router.post('/login', function (req, res, next) {
@@ -87,22 +87,22 @@ router.post('/product/create', function (req, res, next) {
     // Add a document
     // https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document
     const product = req.body;
-    
-    // db
-    //     .collection("productList")
-    //     .add(product)
-    //     .then(function (response) {
-    //         // 回應前端成功
-    //         res.status(200).json({
-    //             msg: "產品創建成功",
-    //             data: product,
-    //             response
-    //         });
-    //     })
-    //     .catch(function (error) {
-    //         // 回應前端失敗
-    //         res.status(500).json(error);
-    //     });
+
+    db
+        .collection("productList")
+        .add(product)
+        .then(function (response) {
+            // 回應前端成功
+            res.status(200).json({
+                msg: `${product.name}產品創建成功`,
+                data: product,
+                response // => response: response(縮寫)
+            });
+        })
+        .catch(function (error) {
+            // 回應前端失敗
+            res.status(500).json(error);
+        });
 });
 
 // 更新商品

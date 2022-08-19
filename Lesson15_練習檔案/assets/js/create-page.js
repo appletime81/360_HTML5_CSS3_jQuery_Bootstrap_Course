@@ -31,6 +31,10 @@ $('#createProductForm').submit(function (event) {
     axios.post("/api/product/create", product)
         .then(res => {
             console.log("成功新增產品", res);
+            alert(res.data.msg);
+
+            // 引導使用者回到首頁
+            window.location = "/";
         })
         .catch(err => {
             console.log("錯誤", err);
