@@ -13,8 +13,12 @@ router.get('/', async function (req, res, next) {
   const productCollection = await db.collection('productList').get();
   // 將產品列表傳遞到模板
   productCollection.forEach(doc => {
-    // productList.push(doc.data());
-    console.log(doc.id, '=>', doc.data());
+    // console.log(doc.id, '=>', doc.data());
+    const product = doc.data();
+    product.id = doc.id;
+    console.log('product', product);
+    // 將產品加入產品列表(productList)
+    productList.push(product);
   });
 
   res.locals.productList = productList;
