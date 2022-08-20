@@ -28,7 +28,12 @@
                     <%= product.name %>
                   </h5>
                   <p>
-                    <%= product.category %>
+                    <!-- match categoryList id and give category name -->
+                    <% categoryList.forEach(category => { %>
+                      <% if (category.id === product.category) { %>
+                          <%= category.title %> 
+                      <% } %>
+                    <% }) %>
                   </p>
                   <p>$ <%= product.price %> NTD</p>
                   <a href="/product/show/<%= product.id %>" class="btn btn-primary">Detail</a>

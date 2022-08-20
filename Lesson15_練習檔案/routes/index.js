@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const categoryList = require('../model/category-list');
 
 // 首頁路由
 router.get('/', async function (req, res, next) {
@@ -22,6 +23,7 @@ router.get('/', async function (req, res, next) {
   });
 
   res.locals.productList = productList;
+  res.locals.categoryList = categoryList;
   res.render('index');
 });
 
