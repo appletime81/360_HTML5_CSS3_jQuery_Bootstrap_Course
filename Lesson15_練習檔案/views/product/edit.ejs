@@ -31,13 +31,15 @@
                     <label for="productCategory">商品分類</label>
                     <select id="productCategory" class="form-control">
                         <% categoryList.forEach(category => { %>
-                        <option  value="<%= category.id %>">
-                            <!-- same with default id -->
                             <% if (category.id === product.category) { %>
-                            selected
+                                <option value="<%= category.id %>" selected>
+                                    <%= category.title %>
+                                </option>
                             <% } %>
-                            <%= category.title %>
-                        </option>
+                            <% else %>
+                                <option value="<%= category.id %>">
+                                    <%= category.title %>
+                                </option>
                         <% }) %>
                     </select>
                 </div>
