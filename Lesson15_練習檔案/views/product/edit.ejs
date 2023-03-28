@@ -35,11 +35,11 @@
                                 <option value="<%= category.id %>" selected>
                                     <%= category.title %>
                                 </option>
-                            <% } %>
-                            <% else %>
+                            <% } else { %>
                                 <option value="<%= category.id %>">
                                     <%= category.title %>
                                 </option>
+                            <% } %>
                         <% }) %>
                     </select>
                 </div>
